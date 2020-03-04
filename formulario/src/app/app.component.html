@@ -1,13 +1,41 @@
 <div class="ui-g">
-  <div class="ui-g-12">
-    <h1>{{title}}</h1>
-  </div>
-  <div class="ui-g-12">
+  <p-fieldset>
+    <p-header style="font-size: 25px">{{title}}</p-header>
+    <div class="ui-g-12">
     <span>Nome</span> &nbsp;
-    <input id="input" type="text" size="30" pInputText [(ngModel)]="formulario.nome">
+    <input id="input_nome" type="text" size="30" pInputText [(ngModel)]="formulario.nome">
+    <span>Sobrenome</span> &nbsp;
+    <input id="input_sobrenome" type="text" size="30" pInputText [(ngModel)]="sobrenome">
   </div>
   <div class="ui-g-12">
     <span>Phone</span> &nbsp;
-    <p-inputMask mask="(999) 999-9999" [(ngModel)]="formulario.telefone" placeholder="(61) 9999-9999"></p-inputMask>
+    <p-inputMask mask="99-99999999" [(ngModel)]="formulario.telefone" placeholder="99-99999999"></p-inputMask>
   </div>
+
+  <div class="ui-g-12">
+    <span>Como nos conheceu: </span> <br>
+    <p-dropdown [options]="listaContatos" [(ngModel)]="formulario.comoConheceu" optionLabel="contato" placeholder="selecione" [showClear]="true"></p-dropdown>
+  </div>
+
+  <div class="ui-g-12">
+    <span>Possui rede social: </span>
+    <div class="ui-g" style="width:250px;margin-bottom:10px">
+      <div class="ui-g-12"><p-radioButton name="group1" value="true" label="sim" [(ngModel)]="possuiredeSocial" (onClick)="setRedeSoccial(true)"></p-radioButton></div>
+      <div class="ui-g-12"><p-radioButton name="group1" value="false" label="não" [(ngModel)]="possuiredeSocial" (onClick)="setRedeSoccial(false)"></p-radioButton></div>
+    </div>
+  </div>
+
+  <div class="ui-g-12" *ngIf="possuiredeSocial === 'true'">
+    <span>Quais: </span>
+    <div class="ui-g" style="width:250px;margin-bottom:10px" *ngFor="let redeSocial of listaRedeSocial">
+      <div class="ui-g-12"><p-checkbox name="group1" [value]=redeSocial [label]="redeSocial.redeSocial" [(ngModel)]="formulario.tiposRedeSocial" ></p-checkbox></div>
+    </div>
+  </div>
+    <div class="ui-g-12">
+      <p-button label="Enviar" (onClick)="enviar()" [disabled]="disableEnviar"></p-button>
+    </div>
+  </p-fieldset>
 </div>
+
+
+<p-button label="exibe formulario" (onClick)="exibeLista()"></p-button>

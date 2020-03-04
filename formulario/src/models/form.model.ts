@@ -11,17 +11,17 @@ export interface IContato {
 export interface IForm {
   nome?: string;
   telefone?: string;
-  comoConheceu?: IContato[]
+  comoConheceu?: IContato
   redeSocial?: boolean;
-  tiposRedeSocial?: ITipoRedeSocialModel[]
+  tiposRedeSocial?: ITipoRedeSocialModel
 }
 
 export class FormModel implements IForm{
   constructor(
     public nome?: string,
     public telefone?: string,
-    public comoConheceu?: IContato[],
+    public comoConheceu?: IContato,
     public redeSocial?: boolean,
-    public tiposRedeSocial?: ITipoRedeSocialModel[]
+    public tiposRedeSocial?: ITipoRedeSocialModel
   ) {}
 }
