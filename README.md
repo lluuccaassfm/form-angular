@@ -1,9 +1,7 @@
-# Nome  Gupy
-Lucas Lima
-
 # Formulario
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.4.
+<b>Nome Gupy:</b> Lucas Lima 
 
 ## Development server
 
